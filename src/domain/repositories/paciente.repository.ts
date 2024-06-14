@@ -3,7 +3,7 @@ import { PacienteEntity } from '../entities/paciente.entity';
 
 
 
-export abstract class CiudadanoRepository {
+export abstract class PacienteRepository {
 
   abstract create( createTodoDto: CreatePacienteDto ): Promise<PacienteEntity>;
   abstract getAll(): Promise<PacienteEntity[]>;

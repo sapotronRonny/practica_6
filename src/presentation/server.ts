@@ -1,6 +1,16 @@
-import express, { Router } from 'express';
+import express,{Router} from 'express';
 import compression from 'compression';
+import dotenv from 'dotenv';
+dotenv.config();
 import path from 'path';
+
+// Importa el router general
+import { AppRoutes } from './routes'; // Importa AppRoutes con nombre
+
+const app = express();
+app.use(compression());
+app.use(express.json());
+
 
 interface Options {
   port: number;
@@ -31,7 +41,6 @@ export class Server {
     //* Middlewares
     this.app.use( express.json() ); // raw
     this.app.use( express.urlencoded({ extended: true }) ); // x-www-form-urlencoded
-    this.app.use( compression() )
 
     //* Public Folder
     this.app.use( express.static( this.publicPath ) );
@@ -47,9 +56,10 @@ export class Server {
       res.sendFile(indexPath);
     });
     
+    app.use('/api', AppRoutes.routes);
 
     this.app.listen(this.port, () => {
-      console.log(`Server running on port ${ this.port }`);
+      console.log(`Servidor escuchando en el puerto http://localhost:${ this.port }`);
     });
 
   }
