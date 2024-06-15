@@ -3,12 +3,12 @@ import { ResultadoEntity } from '../entities/resultado.entity';
 
 
 
-export abstract class PreguntaRepository {
+export abstract class ResultadoRepository {
 
-  abstract create( createPreguntaDto: CreatePreguntaDto ): Promise<PreguntaEntity>;
-  abstract getAll(): Promise<PreguntaEntity[]>;
-  abstract findById( id: number ): Promise<PreguntaEntity>;
-  abstract updateById( updatePreguntaDto: UpdatePreguntaDto ): Promise<PreguntaEntity>;
-  abstract deleteById( id: number ): Promise<PreguntaEntity>;
+  abstract create( createPreguntaDto: CreateResultadoDto ): Promise<ResultadoEntity>;
+  abstract getAll(): Promise<ResultadoEntity[]>;
+  abstract findById( id: number ): Promise<ResultadoEntity>;
+  abstract updateById( updatePreguntaDto: UpdateResultadoDto ): Promise<ResultadoEntity>;
+  abstract deleteById( id: number ): Promise<ResultadoEntity>;
 
 }
